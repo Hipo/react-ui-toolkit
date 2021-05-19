@@ -75,6 +75,8 @@
   },
   "dependencies": {
     "classnames": "2.2.6",
-    "react-textarea-autosize": "8.3.2"
+    "react-textarea-autosize": "8.3.2",
+    "date-fns": "2.21.1",
+    "date-fns-tz": "1.1.4"
   }
 }

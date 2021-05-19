@@ -53,6 +53,16 @@ import ProgressBar, {
   ProgressBarProps as ProgressBarComponentProps
 } from "./progress-bar/ProgressBar";
 import {CountdownProps as CountdownComponentProps} from "../src/countdown/util/countdownTypes";
+import TimeInput, {
+  TimeInputProps as TimeInputComponentProps
+} from "./form/time/input/TimeInput";
+import TimeDropdown, {
+  TimeDropdownProps as TimeDropdownComponentProps,
+  TimeDropdownOption as TimeDropdownComponentOption
+} from "./form/time/dropdown/TimeDropdown";
+import TimeSelect, {
+  TimeSelectProps as TimeSelectComponentProps
+} from "./form/time/select/TimeSelect";
 
 export {
   // Components
@@ -76,6 +86,9 @@ export {
   Countdown,
   ProgressBar,
   Textarea,
+  TimeInput,
+  TimeDropdown,
+  TimeSelect,
   Toggle,
   Switch,
   // Hooks
@@ -121,3 +134,7 @@ export type TextareaProps = TextareaComponentProps;
 export type ToggleProps = ToggleComponentProps;
 export type SwitchProps = SwitchComponentProps;
 export type CountdownProps = CountdownComponentProps;
+export type TimeInputProps = TimeInputComponentProps;
+export type TimeDropdownProps = TimeDropdownComponentProps;
+export type TimeDropdownOption = TimeDropdownComponentOption;
+export type TimeSelectProps = TimeSelectComponentProps;
