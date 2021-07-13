@@ -12,13 +12,20 @@ function toastReducer(state: ToastState, action: ToastAction): ToastState {
   switch (action.type) {
     case "DISPLAY": {
       const {toastData} = action;
+      const {limit} = state;
+      let toastStack = [
+        ...state.toastStack.filter(not(isSameToast(toastData.id))),
+        toastData
+      ];
+
+      if (limit && toastStack.length > limit) {
+        // prune the toasts exceeding the limit
+        toastStack = toastStack.slice(toastStack.length - limit);
+      }
 
       newState = {
         ...state,
-        toastStack: [
-          ...state.toastStack.filter(not(isSameToast(toastData.id))),
-          toastData
-        ]
+        toastStack
       };
       break;
     }
@@ -57,6 +64,29 @@ function toastReducer(state: ToastState, action: ToastAction): ToastState {
       break;
     }
 
+    case "SET_LIMIT": {
+      const {limit} = action;
+      // prune the toasts exceeding the limit
+      const toastStack = state.toastStack.slice(
+        Math.max(0, state.toastStack.length - limit)
+      );
+
+      newState = {
+        ...state,
+        toastStack,
+        limit
+      };
+      break;
+    }
+    case "SET_AUTO_CLOSE": {
+      const {autoCloseToasts} = action;
+
+      newState = {
+        ...state,
+        autoCloseToasts
+      };
+      break;
+    }
     default:
       break;
   }
