@@ -1,13 +1,11 @@
 import React from "react";
 
-interface Option {
-  id: string;
+interface Option<Id = string> {
+  id: Id;
   isDisabled?: boolean;
 }
 
-interface TypeaheadSelectOption extends Option {
-  title: string;
-}
+type TypeaheadSelectOption<Id = string> = Option<Id>;
 
 type SelectItemElement = HTMLLIElement | HTMLDivElement;
 
@@ -32,6 +30,7 @@ interface SelectProps<T extends Option = Option> {
   isDisabled?: boolean;
   shouldCloseOnSelect?: boolean;
   isMenuOpen?: boolean;
+  testid?: string;
 }
 
 type SelectContextValue = Pick<
